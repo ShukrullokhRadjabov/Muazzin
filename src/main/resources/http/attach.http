@@ -1,0 +1,8 @@
+POST localhost:8080/api/v1/attach/user/upload
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQ4NTAxMDksInBob25lIjoiMTIxIiwicm9sZSI6IlVTRVIiLCJleHAiOjE2ODQ5MzY1MDksImlzcyI6Ik11YXp6aW4ifQ.CDsrL3cZH2IWZZUxkjajZ0W5yaJUaYx355Rrbr5r3aMidZVyJ-oSdZHjo1CWRMkA7B98mKhcSEvP03nRbKJTng
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="img.jpg"
+
+< C:\Users\USer\Pictures\img.jpg

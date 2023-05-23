@@ -1,0 +1,28 @@
+
+###Create asma-ul-husna
+POST localhost:8080/api/v1/asma-ul-husna/user/create/uz
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQ4NTAxMDksInBob25lIjoiMTIxIiwicm9sZSI6IlVTRVIiLCJleHAiOjE2ODQ5MzY1MDksImlzcyI6Ik11YXp6aW4ifQ.CDsrL3cZH2IWZZUxkjajZ0W5yaJUaYx355Rrbr5r3aMidZVyJ-oSdZHjo1CWRMkA7B98mKhcSEvP03nRbKJTng
+Content-Type:  application/json
+
+{
+  "arabicTitle": "Ar-rohman",
+  "title": "Ar-rohman",
+  "description": "ARWETRYJHRGF",
+  "info": "wertgwesfdcvsserf",
+  "attachId": "001e7494-e637-4661-8715-c0b493476bb1"
+}
+
+
+### Get asma-ul-husna
+GET localhost:8080/api/v1/asma-ul-husna/user/get/uz/1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQ4NDg2NjcsInBob25lIjoiMTIxIiwicm9sZSI6IlVTRVIiLCJleHAiOjE2ODQ5MzUwNjcsImlzcyI6Ik11YXp6aW4ifQ.to2XOm1QOzZ9Et0REDjFwy1ltkofPCpbq1qNoOiAcxe98UMaYj54c9OGcOb3T-4kA4icBjfZTYqZokLzOGLTFg
+
+
+### Get asma-ul-husna
+GET localhost:8080/api/v1/asma-ul-husna/user/get-list/uz
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQ4NDg2NjcsInBob25lIjoiMTIxIiwicm9sZSI6IlVTRVIiLCJleHAiOjE2ODQ5MzUwNjcsImlzcyI6Ik11YXp6aW4ifQ.to2XOm1QOzZ9Et0REDjFwy1ltkofPCpbq1qNoOiAcxe98UMaYj54c9OGcOb3T-4kA4icBjfZTYqZokLzOGLTFg
+
+
+
+
+
