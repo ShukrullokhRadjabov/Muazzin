@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class AttachDTO {
-    private String id;
+    private Integer id;
     private String originalName;
     private String path;
     private Long size;

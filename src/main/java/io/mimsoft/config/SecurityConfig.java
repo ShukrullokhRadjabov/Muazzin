@@ -34,6 +34,7 @@ public class SecurityConfig {
         http.addFilterBefore(tokenFilter, UsernamePasswordAuthenticationFilter.class);
         http.authorizeHttpRequests()
                 .requestMatchers("/api/v1/*/user/**").permitAll()
+                .requestMatchers("/api/v1/attach/audio/user/**").permitAll()
                 .requestMatchers("/api/v1/*/admin/**").hasAnyRole( "ADMIN")
                 .anyRequest()
                 .authenticated();//.and().formLogin();

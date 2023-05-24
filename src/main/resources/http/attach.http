@@ -1,8 +1,24 @@
-POST localhost:8080/api/v1/attach/user/upload
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQ4NTAxMDksInBob25lIjoiMTIxIiwicm9sZSI6IlVTRVIiLCJleHAiOjE2ODQ5MzY1MDksImlzcyI6Ik11YXp6aW4ifQ.CDsrL3cZH2IWZZUxkjajZ0W5yaJUaYx355Rrbr5r3aMidZVyJ-oSdZHjo1CWRMkA7B98mKhcSEvP03nRbKJTng
+POST localhost:8080/api/v1/attach/photo/admin/upload
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQ5Mjg2NzAsInNlc3Npb25fY29kZSI6ImFjYzMyOTI0LWFhZWMtNDVhMi04NTk5LTRlMDhiZTYzNDA5MCIsInBob25lIjoiMTExMiIsInJvbGUiOiJST0xFX0FETUlOIiwiZXhwIjoxNjg1MDE1MDcwLCJpc3MiOiJNdWF6emluIn0.5u9lTDWsdlMlfbHqxW7521wSFv2rhXRWSOUgMp_iLrxkY6ZhAgEdoNE1L4JHlT2xkdpMEICJMGiA_lJIXUMk6A
 Content-Type: multipart/form-data; boundary=WebAppBoundary
 
 --WebAppBoundary
 Content-Disposition: form-data; name="file"; filename="img.jpg"
 
 < C:\Users\USer\Pictures\img.jpg
+
+### Audio create
+POST localhost:8080/api/v1/attach/audio/admin/upload
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODQ5MzAwMjIsInNlc3Npb25fY29kZSI6ImIwMmNmMmU4LWU2YmEtNDMxZi04YTI4LWRmYWE0MGM4YTc5YSIsInBob25lIjoiMTExIiwicm9sZSI6IlJPTEVfQURNSU4iLCJleHAiOjE2ODUwMTY0MjIsImlzcyI6Ik11YXp6aW4ifQ.8yVWPv9YvseUaHyVXnAgPZtUGUDP5WZ3BHr08I7bLjxg9j7CNbgtBV-QQ75U_dxPybBdkdrPo8X5IaMsVuLrSA
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="My_audio.mp3"
+
+< D:\Telegram\My_audio.mp3
+
+
+### Audio get
+GET localhost:8080/api/v1/attach/audio/user/get/as
+
+

@@ -2,8 +2,9 @@ package io.mimsoft.entity;
 
 import io.mimsoft.enums.UserRole;
 import io.mimsoft.template.AbstractEntity;
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -21,6 +22,7 @@ public class ProfileEntity extends AbstractEntity {
 
     @Enumerated(EnumType.STRING)
     private UserRole role;
+    private String sessionCode;
 
     public ProfileEntity(String name, String surname, String phone, String email, String password, UserRole role) {
         this.name = name;

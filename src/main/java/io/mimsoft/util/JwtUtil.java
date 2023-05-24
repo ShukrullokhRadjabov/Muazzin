@@ -12,11 +12,12 @@ public class JwtUtil {
     private static final int tokenLiveTime = 1000 * 3600 * 24;
     private static final String secretKey = "dasda143mazgi";
 
-    public static String encode(String phone, UserRole role) {
+    public static String encode(String phone, UserRole role, String sessionCode) {
         JwtBuilder jwtBuilder = Jwts.builder();
         jwtBuilder.setIssuedAt(new Date());
         jwtBuilder.signWith(SignatureAlgorithm.HS512, secretKey);
 
+        jwtBuilder.claim("session_code", sessionCode);
         jwtBuilder.claim("phone", phone);
         jwtBuilder.claim("role", role);
 
@@ -29,10 +30,12 @@ public class JwtUtil {
         jwtParser.setSigningKey(secretKey);
         Jws<Claims> jws = jwtParser.parseClaimsJws(token);
         Claims claims = jws.getBody();
+
+        String sessionCode = (String) claims.get("session_code");
         String phone = (String) claims.get("phone");
         String role = (String) claims.get("role");
         UserRole profileRole = UserRole.valueOf(role);
-        return new JwtDTO(phone, profileRole);
+        return new JwtDTO(sessionCode, phone, profileRole);
     }
 
 

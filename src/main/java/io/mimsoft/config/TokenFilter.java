@@ -2,6 +2,9 @@ package io.mimsoft.config;
 import io.jsonwebtoken.JwtException;
 import io.mimsoft.config.security.CustomUserDetailsService;
 import io.mimsoft.dto.JwtDTO;
+import io.mimsoft.entity.ProfileEntity;
+import io.mimsoft.exceptions.AppBadRequestException;
+import io.mimsoft.repository.ProfileRepository;
 import io.mimsoft.util.JwtUtil;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -16,13 +19,15 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
-
+import java.util.Optional;
 @Component
 public class TokenFilter extends OncePerRequestFilter {
     @Autowired
     private UserDetailsService userDetailsService;
     @Autowired
     private CustomUserDetailsService customUserDetailsService;
+    @Autowired
+    private ProfileRepository profileRepository;
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         final String authHeader = request.getHeader("Authorization");
@@ -36,6 +41,14 @@ public class TokenFilter extends OncePerRequestFilter {
         JwtDTO jwtDto;
         try {
             jwtDto = JwtUtil.decode(token);
+            Optional<ProfileEntity> optional = profileRepository.findByPhone(jwtDto.getPhone());
+            if(!optional.isPresent()){
+                throw new AppBadRequestException("Wrong token");
+            }
+            ProfileEntity profile = optional.get();
+            if(profile.getSessionCode()==null || !profile.getSessionCode().equals(jwtDto.getSessionCode())){
+                throw new AppBadRequestException("Session code wrong");
+            }
             UserDetails userDetails = customUserDetailsService.loadUserByUsername(jwtDto.getPhone());
 
             UsernamePasswordAuthenticationToken
@@ -47,7 +60,6 @@ public class TokenFilter extends OncePerRequestFilter {
         } catch (JwtException e) {
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             response.setHeader("Message", "Token Not Valid");
-            return;
         }
     }
 }
